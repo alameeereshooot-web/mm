@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشغل البث المباشر متعدد الجودات</title>
-    <!-- استدعاء مكتبة مشغل الفيديو الشهيرة Video.js -->
-    <link href="https://zencdn.net" rel="stylesheet" />
+    <title>مشغل البث المباشر</title>
+    <!-- استدعاء مشغل Clappr المتوافق مع المتصفحات لملفات m3u8 -->
+    <script type="text/javascript" src="https://jsdelivr.net"></script>
     <style>
         body { background-color: #111; color: white; text-align: center; font-family: sans-serif; padding-top: 50px; }
-        .video-container { max-width: 800px; margin: 0 auto; width: 100%; px; }
+        #player { max-width: 800px; margin: 0 auto; width: 100%; height: 450px; }
     </style>
 </head>
 <body>
 
-    <h2>البث المباشر الموحد</h2>
+    <h2>البث المباشر الموحد متعدد الجودات</h2>
     
-    <div class="video-container">
-        <!-- مشغل الفيديو مع رابط البث الخاص بك -->
-        <video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="720" height="405" data-setup='{}'>
-            <source src="https://workers.dev" type="application/x-mpegURL">
-            <p class="vjs-no-js">المتصفح لا يدعم تشغيل هذا الفيديو.</p>
-        </video>
-    </div>
+    <!-- حاوية مشغل الفيديو -->
+    <div id="player"></div>
 
-    <script src="https://zencdn.net"></script>
+    <script>
+        var player = new Clappr.Player({
+            source: "https://workers.dev",
+            parentId: "#player",
+            width: "100%",
+            height: "100%",
+            autoPlay: true,
+            mute: false
+        });
+    </script>
 </body>
 </html>
